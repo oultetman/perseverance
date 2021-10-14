@@ -1,3 +1,4 @@
+import math
 from random import randint
 
 
@@ -32,6 +33,13 @@ def affiche_carte(carte: list):
         print(s)
 
 
-carte = creer_random_carte(5, 10)
-print(carte)
-affiche_carte(carte)
+def azimut_to_angle_rad(azimut: float) -> float:
+    return ((-azimut + 90) % 360) * math.pi / 180
+
+
+if __name__ == '__main__':
+    carte = creer_random_carte(5, 10)
+    print(carte)
+    affiche_carte(carte)
+    for i in range(0, 361, 45):
+        print(i, azimut_to_angle_rad(i))
